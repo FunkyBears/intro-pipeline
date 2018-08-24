@@ -10,9 +10,17 @@ pipeline {
       }
     }
     stage('Ramping up') {
+      input {
+        message 'Ready to go?'
+        id 'Ready'
+        parameters {
+          choice(name: 'APP_VERSION', choices: '''v1.1
+v1.2
+v1.3''', description: 'What to deploy?')
+        }
+      }
       steps {
         sleep 1
-        input(message: 'Ready to go?', id: 'input', ok: 'Ready')
       }
     }
   }
