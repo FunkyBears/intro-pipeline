@@ -9,6 +9,16 @@ pipeline {
         sh 'echo true'
       }
     }
+    stage('Checkpoint') {
+      steps {
+        checkpoint 'Checkpoint'
+      }
+    }
+    stage('Deploy') {
+      steps {
+        echo 'Deploying....'
+      }
+    }
     stage('Ramping up') {
       input {
         message 'Ready to go?'
